@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Task;
 import dao.Dao;
 import dto.User;
 @WebServlet("/login")
@@ -26,7 +27,7 @@ public class login extends HttpServlet {
 				//verify the password
 				if(u.getUserpassword().equals(password)) {
 					//login success
-					req.setAttribute("user", u);
+					req.getSession().setAttribute("user", u);
 					req.getRequestDispatcher("home.jsp").include(req, resp);
 				}else {
 					//password wrong
@@ -52,5 +53,18 @@ public class login extends HttpServlet {
 			}
 		
 	}
+	
+	@Override
+	public void destroy() {
+		System.out.println("from destroy");
+	}
+	
+	@Override
+	public void init() throws ServletException{
+		System.out.println("from init");
+	}
+	
+	
+	
 
 }

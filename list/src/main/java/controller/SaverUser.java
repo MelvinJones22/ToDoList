@@ -39,7 +39,7 @@ public class SaverUser extends HttpServlet {
 		Dao dao = new Dao();
 
 		try {
-			int res = dao.saverUser(user);
+			int res = dao.saveUser(user);
 			if(res>0) {
 				resp.sendRedirect("login.jsp");
 			}
